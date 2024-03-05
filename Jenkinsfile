@@ -12,13 +12,13 @@ pipeline{
         stage('Build'){
             steps{
                 build 'PES1UG21CS659-1'
-                sh 'g++ ./main/main.cpp -o output'
+                sh 'g++ ./main/main.cpp -o PES1UG21CS659-1'
             }
         }
 
         stage('Test'){
             steps{
-                sh './output'
+                sh './PES1UG21CS659-1'
             }
         }
 
@@ -27,11 +27,11 @@ pipeline{
                 echo 'deploy'
             }
         }
-
-        post{
-            failure{
-                error 'Pipeline failed'
-            }
+    }
+    post{
+        failure{
+            error 'Pipeline failed'
         }
     }
+    
 }
